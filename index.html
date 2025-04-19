@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WARA EV - Made in Bolivia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Tilt+Neon&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+    nav {
+      position: fixed;
+      top: 20%;
+      left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 3;
+      animation: fadeInNav 2s ease forwards;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 300;
+      border-left: 2px solid white;
+      padding-left: 0.5rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      color: #00ffff;
+      font-size: 1.2rem;
+      border-left: 4px solid #00ffff;
+    }
+    section.hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      animation: fadeInSection 2s ease-out;
+    }
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.8);
+      animation: neonPulse 5s infinite;
+    }
+    .frase-sobre-img {
+      position: absolute;
+      top: 10%;
+      left: 25%;
+      color: #ccc;
+      text-align: center;
+      font-size: 1.2rem;
+      font-style: italic;
+      background-color: transparent;
+      padding: 1rem;
+      z-index: 2;
+      width: 90%;
+      max-width: 700px;
+      animation: fadeUp 2s ease forwards;
+    }
+    .logo-title {
+      font-family: 'Tilt Neon', cursive;
+      font-size: 4rem;
+      margin-top: -1rem;
+      z-index: 2;
+      animation: popIn 2s ease-out forwards;
+      opacity: 0;
+      
+    }
+    .precio {
+      position: absolute;
+      right: 1rem;
+      top: 20%;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-weight: 300;
+      font-size: 0.9rem;
+      z-index: 2;
+      color: white;
+      animation: fadeIn 3s ease forwards;
+    }
+    section.info {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInSection 2s ease-out;
+    }
+    .info-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('appcom.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      animation: zoomIn 4s ease-in-out;
+    }
+    section.doble-img {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      animation: slideIn 2s ease-out;
+    }
+    .mitad {
+      flex: 1;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .izquierda {
+      background-image: url('vsuperior.png');
+      animation: fadeInLeft 2s ease forwards;
+    }
+    .derecha {
+      background-image: url('vtrasera.png');
+      animation: fadeInRight 2s ease forwards;
+    }
+    .texto {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 10px black;
+      background-color: transparent;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      animation: fadeUp 2s ease forwards;
+    }
+    section.costado {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      animation: fadeInSection 2s ease-out;
+    }
+    .costado-img {
+      background-image: url('vcostado.png');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100%;
+      animation: zoomIn 4s ease-in-out;
+    }
+    section.reserva {
+      padding: 3rem 1rem;
+      text-align: center;
+      animation: fadeInSection 2s ease-out;
+    }
+    .reservar-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: white;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      animation: popIn 2s ease forwards;
+    }
+    .reservar-btn:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      padding: 2rem 1rem;
+      animation: fadeIn 2s ease forwards;
+    }
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.3s;
+      animation: fadeIn 2s ease forwards;
+    }
+    .social-icons a:hover {
+      color: #00ffff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInSlide {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInNav {
+      from { transform: translateX(-30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(1.05); }
+      to { transform: scale(1); }
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes slideIn {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes neonPulse {
+    66%  { filter: drop-shadow(0 0 20px #f00) brightness(1.1); }
+    33%  { filter: drop-shadow(0 0 20px #ff0) brightness(1.1); }
+  0%   { filter: drop-shadow(0 0 8px #0f0) brightness(1); }
+  100% { filter: drop-shadow(0 0 8px #0f0) brightness(1); }
+}
+     
+    
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#quees">¿Qué es?</a>
+    <a href="#performance" style="color: #00ff77">Reservar</a>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <div class="frase-sobre-img">El verdadero y único 'Made in Bolivia': más que piezas armadas, somos las piezas que construyen. Más que ensamblar componentes, nosotros los creamos. Más que una promesa, una realidad.</div>
+    <img src="vistafrente.png" alt="Coche cubierto" class="hero-img">
+    <div class="logo-title">WARA</div>
+    <div class="precio">Precio<br><strong>XXXX Bs</strong></div>
+  </section>
+
+  <section class="info" id="quees">
+    <div class="info-img"></div>
+  </section>
+
+  <section class="doble-img">
+    <div class="mitad izquierda">
+      <div class="texto">En el momento correcto</div>
+    </div>
+    <div class="mitad derecha">
+      <div class="texto">En el lugar correcto</div>
+    </div>
+  </section>
+
+  <section class="costado">
+    <div class="costado-img"></div>
+  </section>
+
+  <section class="reserva" id="performance">
+    <a href="https://forms.gle/L8x3FZwXfKc6GWp86" target="_blank" class="reservar-btn">Reservar</a>
+    <div style="margin-top: 1rem; animation: fadeIn 2s ease forwards;">+591 60713875</div>
+    <div style="margin-top: 1rem; max-width: 400px; margin-inline: auto; animation: fadeUp 2s ease forwards;">
+      Al completar el formulario podrás optar por las primeras pruebas de manejo gratis
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#">IG</a>
+      <a href="#">X</a>
+      <a href="#">YT</a>
+      <a href="#">FB</a>
+    </div>
+  </footer>
+</body>
+</html>
